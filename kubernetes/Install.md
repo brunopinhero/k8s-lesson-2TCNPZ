@@ -1,7 +1,5 @@
 # Sumário para Instalação de Kubernetes em Instância EC2 na AWS
 
-Repositório dedicado à turma 2TCNR do curso Cloud Developer - FIAP.
-
 1. [Criar Instância EC2 na AWS](#1-criar-instância-ec2-na-aws) ✅
 
 - curso-k8s
