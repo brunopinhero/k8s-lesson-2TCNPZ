@@ -3,11 +3,11 @@ kind: Pod
 metadata:
   name: pod-2
   labels:
-    app: segundo-pod
+    app: primeiro-pod
     curso: 2TCNPZ
 spec:
   containers:
     - name: nginx-container-2
       image: nginx:latest
       ports:
-        - containerPort: 85
+        - containerPort: 80
