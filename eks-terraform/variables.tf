@@ -1,17 +1,17 @@
+variable "aws_region" {
+  description = "The AWS region to create the cluster in."
+  type        = string
+  default     = "us-east-1"
+}
+
 variable "cluster_name" {
-  description = "The name of the EKS cluster"
+  description = "The name of the EKS cluster."
   type        = string
-  default     = "fiap-k8s-cluster"
+  default     = "meu-cluster-terraform"
 }
 
-variable "node_group_instance_type" {
-  description = "The EC2 instance type for the EKS node group"
-  type        = string
-  default     = "t3.medium" # Escolha um tipo de instância que a AWS Academy permita
-}
-
-variable "node_group_desired_size" {
-  description = "The desired number of nodes in the EKS node group"
-  type        = number
-  default     = 2
-}
+# No longer needed, as subnets are now created by Terraform:
+# variable "subnet_ids" {
+#   description = "The IDs of the subnets where the nodes will be created."
+#   type        = list(string)
+# }
