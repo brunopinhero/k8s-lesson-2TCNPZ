@@ -1,0 +1,29 @@
+<% layout('layout') -%>
+  <h1 class="mb-4">Portal de Notícias</h1>
+
+  <form action="/noticias" method="post" class="mb-4">
+    <div class="mb-2">
+      <input class="form-control" name="titulo" placeholder="Título" required>
+    </div>
+    <div class="mb-2">
+      <textarea class="form-control" name="conteudo" placeholder="Conteúdo" required></textarea>
+    </div>
+    <div class="mb-2">
+      <input class="form-control" name="autor" placeholder="Autor" required>
+    </div>
+    <button class="btn btn-success">Cadastrar Notícia</button>
+  </form>
+
+  <ul class="list-group">
+    <% noticias.forEach(noticia=> { %>
+      <li class="list-group-item">
+        <h5>
+          <%= noticia.titulo %>
+        </h5>
+        <p>
+          <%= noticia.conteudo %>
+        </p>
+        <small>Autor: <%= noticia.autor %></small>
+      </li>
+      <% }) %>
+  </ul>

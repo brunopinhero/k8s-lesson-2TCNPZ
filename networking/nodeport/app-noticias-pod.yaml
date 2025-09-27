@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-noticias
+  namespace: portal-noticias
+  labels:
+    app: app-noticias
+spec:
+  containers:
+  - name: app-noticias
+    image: camanducci/app-noticias:latest
+    env:
+    - name: DB_HOST
+      value: mysql
+    - name: DB_USER
+      value: root
+    - name: DB_PASS
+      value: root
+    - name: DB_NAME
+      value: noticiasdb
+    ports:
+    - containerPort: 3500
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-noticias-deployment
+  namespace: portal-noticias
+  labels:
+    app: app-noticias
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-noticias
+  template:
+    metadata:
+      labels:
+        app: app-noticias
+    spec:
+      containers:
+      - name: app-noticias
+        image: camanducci/app-noticias:latest
+        env:
+        - name: DB_HOST
+          value: mysql
+        - name: DB_USER
+          value: root
+        - name: DB_PASS
+          value: root
+        - name: DB_NAME
+          value: noticiasdb
+        ports:
+        - containerPort: 3500
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-noticias-nodeport
+  namespace: portal-noticias
+spec:
+  type: NodePort            # <-- aqui é NodePort
+  selector:
+    app: app-noticias   # pods que vão receber tráfego
+  ports:
+  - port: 3500       # porta interna do cluster
+    targetPort: 3500  # porta do container
+    nodePort: 30080 # porta exposta em cada nó do cluster (30000-32767)
+ 

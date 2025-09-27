@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS noticiasdb;
+USE noticiasdb;
+
+CREATE TABLE IF NOT EXISTS noticias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    conteudo TEXT NOT NULL,
+    autor VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
