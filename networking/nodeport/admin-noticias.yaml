@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: admin-noticias
+  labels:
+    app: admin-noticias
+spec:
+  containers:
+    - name: admin-noticias-container
+      image: camanducci/admin-noticias-app:latest
+      ports:
+        - containerPort: 5000
